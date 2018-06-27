@@ -14,5 +14,5 @@ module "certificate" {
 }
 
 output "certificate_arn" {
-  value = "${module.certificate.certificate_arn}"
+  value = "${module.certificate.arn}"
 }
