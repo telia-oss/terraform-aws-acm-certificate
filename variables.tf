@@ -1,10 +1,6 @@
 # ------------------------------------------------------------------------------
 # Variables
 # ------------------------------------------------------------------------------
-variable "prefix" {
-  description = "Prefix used for resource names."
-}
-
 variable "domain" {
   description = "The domain of the certificate to look up"
 }

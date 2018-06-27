@@ -12,7 +12,6 @@ data "aws_subnet_ids" "main" {
 
 module "certificate" {
   source  = "../"
-  prefix  = "example"
   domain  = "example.com"
   zone_id = "D34D8E3F1733AA"
 
