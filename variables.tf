@@ -2,11 +2,11 @@
 # Variables
 # ------------------------------------------------------------------------------
 variable "domain" {
-  description = "The domain of the certificate to look up"
+  description = "The domain of the certificate to look up."
 }
 
 variable "zone_id" {
-  description = "The Hosted Zone ID."
+  description = "The ID of the hosted zone to contain this record."
 }
 
 variable "tags" {
