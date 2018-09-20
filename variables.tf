@@ -11,7 +11,7 @@ variable "zone_id" {
 
 variable "create_wildcard" {
   description = "If set to \"true\" also creates a wildcard certificate for the domain"
-  default = "false"
+  default     = "false"
 }
 
 variable "tags" {
