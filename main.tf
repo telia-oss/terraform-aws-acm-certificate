@@ -26,19 +26,19 @@ resource "aws_route53_record" "cert_validation" {
 }
 
 
-resource "aws_acm_certificate_validation" "main" {
+/*resource "aws_acm_certificate_validation" "main" {
   certificate_arn = "${aws_acm_certificate.main.arn}"
 
   validation_record_fqdns = [
     "${aws_route53_record.cert_validation.fqdn}",
   ]
-}
+}*/
 
-resource "aws_acm_certificate_validation" "wildcard" {
+/*resource "aws_acm_certificate_validation" "wildcard" {
   count           = "${var.create_wildcard == "true" ? 1 : 0}"
   certificate_arn = "${aws_acm_certificate.wildcard.arn}"
 
   validation_record_fqdns = [
     "${aws_route53_record.cert_validation.fqdn}",
   ]
-}
+}*/
