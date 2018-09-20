@@ -25,7 +25,6 @@ resource "aws_route53_record" "cert_validation" {
   ]
 }
 
-
 /*resource "aws_acm_certificate_validation" "main" {
   certificate_arn = "${aws_acm_certificate.main.arn}"
 
@@ -33,6 +32,7 @@ resource "aws_route53_record" "cert_validation" {
     "${aws_route53_record.cert_validation.fqdn}",
   ]
 }*/
+
 
 /*resource "aws_acm_certificate_validation" "wildcard" {
   count           = "${var.create_wildcard == "true" ? 1 : 0}"
@@ -42,3 +42,4 @@ resource "aws_route53_record" "cert_validation" {
     "${aws_route53_record.cert_validation.fqdn}",
   ]
 }*/
+
