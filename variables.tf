@@ -19,3 +19,8 @@ variable "tags" {
   type        = "map"
   default     = {}
 }
+
+variable "wait_for_validation" {
+  description = "If set to \"false\" this module will not wait for the validation to complete and will not return the certificate ARN"
+  default     = "true"
+}
