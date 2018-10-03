@@ -35,7 +35,7 @@ resource "aws_acm_certificate_validation" "main" {
 }
 
 resource "aws_acm_certificate_validation" "wildcard" {
-  count           = "${var.wait_for_validation == "true" ? 1 : 0}"
+  count           = "${var.create_wildcard == "true" && var.wait_for_validation == "true" ? 1 : 0}"
   certificate_arn = "${aws_acm_certificate.wildcard.arn}"
 
   validation_record_fqdns = [
