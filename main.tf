@@ -5,6 +5,10 @@ resource "aws_acm_certificate" "main" {
   domain_name       = "${var.domain}"
   validation_method = "DNS"
   tags              = "${var.tags}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_acm_certificate" "wildcard" {
@@ -12,6 +16,10 @@ resource "aws_acm_certificate" "wildcard" {
   domain_name       = "*.${var.domain}"
   validation_method = "DNS"
   tags              = "${var.tags}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_route53_record" "cert_validation" {
