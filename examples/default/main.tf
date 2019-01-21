@@ -19,8 +19,8 @@ provider "aws" {
 }
 
 module "certificate" {
-  source  = "../../"
-  domain  = "<route53-zone-name>"
+  source = "../../"
+  domain = "<route53-zone-name>"
 
   tags {
     environment = "dev"
