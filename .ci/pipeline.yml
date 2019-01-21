@@ -12,6 +12,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ((telia-divx-common-services-stage-secret-key))
           AWS_SESSION_TOKEN: ((telia-divx-common-services-stage-session-token))
           KMS_KEY_ID: ((telia-divx-common-services-stage-state-bucket-key))
+          ROUTE53_ZONE_NAME: ((testing-pipeline-hosted-zone))
         file: this-module/.ci/tasks/apply/task.yml
         input_mapping: {source: this-module}
       - task: test

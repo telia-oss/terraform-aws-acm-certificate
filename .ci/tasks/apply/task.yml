@@ -13,6 +13,7 @@ params:
   AWS_SECRET_ACCESS_KEY:
   AWS_SESSION_TOKEN:
   KMS_KEY_ID:
+  ROUTE53_ZONE_NAME:
 
 inputs:
   - name: source
