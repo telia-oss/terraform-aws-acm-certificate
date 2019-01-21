@@ -11,6 +11,10 @@ resource "aws_acm_certificate" "main" {
   }
 }
 
+data "aws_route53_zone" "main" {
+  name = "${var.domain}"
+}
+
 resource "aws_acm_certificate" "wildcard" {
   count             = "${var.create_wildcard == "true" ? 1 : 0}"
   domain_name       = "*.${var.domain}"
@@ -23,7 +27,7 @@ resource "aws_acm_certificate" "wildcard" {
 }
 
 resource "aws_route53_record" "cert_validation" {
-  zone_id = "${var.zone_id}"
+  zone_id = "${data.aws_route53_zone.main.id}"
   name    = "${aws_acm_certificate.main.domain_validation_options.0.resource_record_name}"
   type    = "${aws_acm_certificate.main.domain_validation_options.0.resource_record_type}"
   ttl     = 60
