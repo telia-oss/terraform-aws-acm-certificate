@@ -6,7 +6,7 @@ Use this module for creating and validating an ACM certificate. Bear in mind  th
 
 ## Examples
 
-* [Simple Example](examples/default/example.tf)
+* [Simple Example](examples/default/main.tf)
 
 ### Notes
 
