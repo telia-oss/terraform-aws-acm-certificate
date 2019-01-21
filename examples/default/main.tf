@@ -19,7 +19,7 @@ provider "aws" {
 }
 
 module "certificate" {
-  source  = "../"
+  source  = "../../"
   domain  = "<route53-zone-name>"
 
   tags {
