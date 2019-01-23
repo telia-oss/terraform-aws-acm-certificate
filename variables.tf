@@ -2,7 +2,11 @@
 # Variables
 # ------------------------------------------------------------------------------
 variable "domain" {
-  description = "The domain of the certificate to look up."
+  description = "The hosted zone/domian name"
+}
+
+variable "host" {
+  description = "The specific host to create a certificate for. (the name before the first .)"
 }
 
 variable "create_wildcard" {

@@ -2,7 +2,7 @@
 # Resource
 # ------------------------------------------------------------------------------
 resource "aws_acm_certificate" "main" {
-  domain_name       = "${var.domain}"
+  domain_name       = "${var.host}.${var.domain}"
   validation_method = "DNS"
   tags              = "${var.tags}"
 
