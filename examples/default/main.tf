@@ -21,7 +21,7 @@ provider "aws" {
 module "certificate" {
   source = "../../"
   domain = "<route53-zone-name>"
-
+  host = "default-test"
   tags {
     environment = "dev"
     terraform   = "True"
