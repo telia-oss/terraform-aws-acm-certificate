@@ -19,9 +19,9 @@ provider "aws" {
 }
 
 module "certificate" {
-  source = "../../"
-  domain = "<route53-zone-name>"
-  site   = "default-test"
+  source           = "../../"
+  hosted_zone_name = "<route53-zone-name>"
+  certificate_name = "default-test.<route53-zone-name>"
 
   tags {
     environment = "dev"

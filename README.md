@@ -19,10 +19,10 @@ Due to the fact that both the wildcard certificate for a domain/subdomain (e.g *
 (e.g test.example.com) requests use the same DNS valididation record it is important to request both at the same time if 
 you need both. In this case set the optional `create_wildcard` parameter to `"true"`
 
-Do not request a certificate for the site `"*"` and select create_wildcard = `"true"` in the same request
+Do not request a certificate that includes a wildcard and select create_wildcard = `"true"` in the same request
 ### Wildcard at the top of your domain/subdomain
-To serve a site at the top of your domain  (e.g. https://example.com) you will need to request a certificate for the site 
-`"*"` in the hosted zone. You may also want to read here for how to set the DNS record -  
+To serve a site at the top of your domain  (e.g. https://example.com) you will need to request a certificate with the same 
+name as hosted zone. You may also want to read here for how to set the DNS record -  
 https://aws.amazon.com/premiumsupport/knowledge-center/route-53-create-alias-records/
 
 
