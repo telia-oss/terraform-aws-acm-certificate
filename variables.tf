@@ -5,8 +5,8 @@ variable "domain" {
   description = "The hosted zone/domian name"
 }
 
-variable "host" {
-  description = "The specific host to create a certificate for. (the name before the first .)"
+variable "site" {
+  description = "The specific site to create a certificate for. (the name before the first .)"
 }
 
 variable "create_wildcard" {
