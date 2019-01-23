@@ -17,7 +17,7 @@ data "aws_route53_zone" "main" {
 
 resource "aws_acm_certificate" "wildcard" {
   count             = "${var.create_wildcard == "true" ? 1 : 0}"
-  domain_name       = "*.${var.domain}"
+  domain_name       = "*.${var.site}.${var.domain}"
   validation_method = "DNS"
   tags              = "${var.tags}"
 
