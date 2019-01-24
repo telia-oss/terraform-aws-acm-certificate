@@ -1,12 +1,16 @@
 # ------------------------------------------------------------------------------
 # Variables
 # ------------------------------------------------------------------------------
-variable "domain" {
-  description = "The domain of the certificate to look up."
+variable "hosted_zone_name" {
+  description = "The hosted zone"
+}
+
+variable "certificate_name" {
+  description = "The certificate you are requesting (must be valid for the hosted zone)"
 }
 
 variable "create_wildcard" {
-  description = "If set to \"true\" also creates a wildcard certificate for the domain"
+  description = "If set to \"true\" also creates a wildcard certificate for the domain/subdomain"
   default     = "false"
 }
 

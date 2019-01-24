@@ -2,7 +2,7 @@
 # Resource
 # ------------------------------------------------------------------------------
 resource "aws_acm_certificate" "main" {
-  domain_name       = "${var.domain}"
+  domain_name       = "${var.certificate_name}"
   validation_method = "DNS"
   tags              = "${var.tags}"
 
@@ -11,13 +11,17 @@ resource "aws_acm_certificate" "main" {
   }
 }
 
+locals {
+  test = "${var.create_wildcard == "true" ? 1 : 0}"
+}
+
 data "aws_route53_zone" "main" {
-  name = "${var.domain}"
+  name = "${var.hosted_zone_name}"
 }
 
 resource "aws_acm_certificate" "wildcard" {
   count             = "${var.create_wildcard == "true" ? 1 : 0}"
-  domain_name       = "*.${var.domain}"
+  domain_name       = "*.${var.certificate_name}"
   validation_method = "DNS"
   tags              = "${var.tags}"
 

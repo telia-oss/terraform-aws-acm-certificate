@@ -13,14 +13,15 @@ terraform {
 }
 
 provider "aws" {
-  version             = "1.52.0"
+  version             = "1.56.0"
   region              = "eu-west-1"
   allowed_account_ids = ["<test-account-id>"]
 }
 
 module "certificate" {
-  source = "../../"
-  domain = "<route53-zone-name>"
+  source           = "../../"
+  hosted_zone_name = "<route53-zone-name>"
+  certificate_name = "default-test.<route53-zone-name>"
 
   tags {
     environment = "dev"
