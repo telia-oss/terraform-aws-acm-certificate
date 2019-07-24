@@ -1,5 +1,5 @@
 terraform {
-  required_version = "0.11.11"
+  required_version = "0.12.5"
 
   backend "s3" {
     key            = "terraform-modules/development/terraform-aws-acm-certificate/default.tfstate"
@@ -13,7 +13,7 @@ terraform {
 }
 
 provider "aws" {
-  version             = "1.56.0"
+  version             = "2.20.0"
   region              = "eu-west-1"
   allowed_account_ids = ["<test-account-id>"]
 }
@@ -23,7 +23,7 @@ module "certificate" {
   hosted_zone_name = "<route53-zone-name>"
   certificate_name = "default-test.<route53-zone-name>"
 
-  tags {
+  tags = {
     environment = "dev"
     terraform   = "True"
   }
