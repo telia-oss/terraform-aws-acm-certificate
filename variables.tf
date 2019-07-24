@@ -3,10 +3,12 @@
 # ------------------------------------------------------------------------------
 variable "hosted_zone_name" {
   description = "The hosted zone"
+  type        = string
 }
 
 variable "certificate_name" {
   description = "The certificate you are requesting (must be valid for the hosted zone)"
+  type        = string
 }
 
 variable "create_wildcard" {
@@ -22,7 +24,7 @@ variable "tags" {
 }
 
 variable "wait_for_validation" {
-  description = "If set to \"false\" this module will not wait for the validation to complete and will not return the certificate ARN"
+  description = "If set to false this module will not wait for the validation to complete and will not return the certificate ARN"
   type        = bool
   default     = true
 }
