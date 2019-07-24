@@ -12,7 +12,7 @@ resource "aws_acm_certificate" "main" {
 }
 
 locals {
-  test = var.create_wildcard == "true" ? 1 : 0
+  test = var.create_wildcard == true ? 1 : 0
 }
 
 data "aws_route53_zone" "main" {
@@ -20,7 +20,7 @@ data "aws_route53_zone" "main" {
 }
 
 resource "aws_acm_certificate" "wildcard" {
-  count             = var.create_wildcard == "true" ? 1 : 0
+  count             = var.create_wildcard == true ? 1 : 0
   domain_name       = "*.${var.certificate_name}"
   validation_method = "DNS"
   tags              = var.tags
@@ -42,7 +42,7 @@ resource "aws_route53_record" "cert_validation" {
 }
 
 resource "aws_acm_certificate_validation" "main" {
-  count           = var.wait_for_validation == "true" ? 1 : 0
+  count           = var.wait_for_validation == true ? 1 : 0
   certificate_arn = aws_acm_certificate.main.arn
 
   validation_record_fqdns = [
@@ -51,7 +51,7 @@ resource "aws_acm_certificate_validation" "main" {
 }
 
 resource "aws_acm_certificate_validation" "wildcard" {
-  count           = var.create_wildcard == "true" && var.wait_for_validation == "true" ? 1 : 0
+  count           = var.create_wildcard == true && var.wait_for_validation == true ? 1 : 0
   certificate_arn = aws_acm_certificate.wildcard[0].arn
 
   validation_record_fqdns = [
