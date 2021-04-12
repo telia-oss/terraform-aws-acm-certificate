@@ -32,12 +32,12 @@ resource "aws_acm_certificate" "wildcard" {
 
 resource "aws_route53_record" "cert_validation" {
   zone_id = data.aws_route53_zone.main.id
-  name    = aws_acm_certificate.main.domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.main.domain_validation_options[0].resource_record_type
+  name    = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_name
+  type    = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_type
   ttl     = 60
 
   records = [
-    aws_acm_certificate.main.domain_validation_options[0].resource_record_value,
+    tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_value,
   ]
 }
 
