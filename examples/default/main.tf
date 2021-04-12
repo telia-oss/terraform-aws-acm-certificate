@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 0.14"
 
   backend "s3" {
     key            = "terraform-modules/development/terraform-aws-acm-certificate/default.tfstate"
@@ -13,8 +13,7 @@ terraform {
 }
 
 provider "aws" {
-  version             = ">= 2.20"
-  region              = "eu-west-1"
+  region = "eu-west-1"
   allowed_account_ids = ["<test-account-id>"]
 }
 
