@@ -1,21 +1,9 @@
 terraform {
-  required_version = ">= 0.12"
-
-  backend "s3" {
-    key            = "terraform-modules/development/terraform-aws-acm-certificate/default.tfstate"
-    bucket         = "<test-account-id>-terraform-state"
-    dynamodb_table = "<test-account-id>-terraform-state"
-    acl            = "bucket-owner-full-control"
-    encrypt        = "true"
-    kms_key_id     = "<kms-key-id>"
-    region         = "eu-west-1"
-  }
+  required_version = ">= 0.14"
 }
 
 provider "aws" {
-  version             = ">= 2.20"
-  region              = "eu-west-1"
-  allowed_account_ids = ["<test-account-id>"]
+  region = "eu-west-1"
 }
 
 module "certificate" {
