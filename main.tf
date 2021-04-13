@@ -31,31 +31,29 @@ resource "aws_acm_certificate" "wildcard" {
 }
 
 resource "aws_route53_record" "cert_validation" {
-  zone_id = data.aws_route53_zone.main.id
-  name    = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_name
-  type    = tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_type
-  ttl     = 60
+  for_each = {
+    for record in aws_acm_certificate.main.domain_validation_options : record.domain_name => {
+      name   = record.resource_record_name
+      type   = record.resource_record_type
+      record = record.resource_record_value
+    }
+  }
 
-  records = [
-    tolist(aws_acm_certificate.main.domain_validation_options)[0].resource_record_value,
-  ]
+  name    = each.value.name
+  type    = each.value.type
+  records = [each.value.record]
+  zone_id = data.aws_route53_zone.main.id
+  ttl     = 60
 }
 
 resource "aws_acm_certificate_validation" "main" {
-  count           = var.wait_for_validation == true ? 1 : 0
-  certificate_arn = aws_acm_certificate.main.arn
-
-  validation_record_fqdns = [
-    aws_route53_record.cert_validation.fqdn,
-  ]
+  count                   = var.wait_for_validation == true ? 1 : 0
+  certificate_arn         = aws_acm_certificate.main.arn
+  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 }
 
 resource "aws_acm_certificate_validation" "wildcard" {
-  count           = var.create_wildcard == true && var.wait_for_validation == true ? 1 : 0
-  certificate_arn = aws_acm_certificate.wildcard[0].arn
-
-  validation_record_fqdns = [
-    aws_route53_record.cert_validation.fqdn,
-  ]
+  count                   = var.create_wildcard == true && var.wait_for_validation == true ? 1 : 0
+  certificate_arn         = aws_acm_certificate.wildcard[0].arn
+  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 }
-
