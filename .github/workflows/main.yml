@@ -6,10 +6,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Terraform
-      uses: hashicorp/setup-terraform@v1 
-      with: { terraform_version: 0.14.10 }
+    - uses: actions/checkout@v2
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v1.2.1
+      with:
+        terraform_version: 0.14.10 
     - name: Install Taskfile
       run: curl -sL https://taskfile.dev/install.sh | sh
     - name: Run tests
