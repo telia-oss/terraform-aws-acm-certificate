@@ -13,8 +13,8 @@ variable "certificate_name" {
 
 variable "subject_alternative_names" {
   description = "(Optional) Set of domains that should be SANs in the issued certificate."
-  type= list(any)
-  default= []
+  type        = list(any)
+  default     = []
 }
 
 variable "create_wildcard" {
