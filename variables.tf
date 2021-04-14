@@ -13,7 +13,7 @@ variable "certificate_name" {
 
 variable "subject_alternative_names" {
   description = "(Optional) Set of domains that should be SANs in the issued certificate."
-  type        = list(any)
+  type        = list(string)
   default     = []
 }
 
