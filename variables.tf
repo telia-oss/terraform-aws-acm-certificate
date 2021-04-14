@@ -11,6 +11,12 @@ variable "certificate_name" {
   type        = string
 }
 
+variable "subject_alternative_names" {
+  description = "(Optional) Set of domains that should be SANs in the issued certificate."
+  type        = list(any)
+  default     = []
+}
+
 variable "create_wildcard" {
   description = "If set to \"true\" also creates a wildcard certificate for the domain/subdomain"
   type        = bool
