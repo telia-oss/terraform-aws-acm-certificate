@@ -18,7 +18,7 @@ module "certificate" {
   }
 }
 
-module "certificate_with_SANs" {
+module "certificate_with_sans" {
   source                    = "../../"
   hosted_zone_name          = "<route53-zone-name>"
   domain_name               = "default-test-1.<route53-zone-name>"
@@ -35,6 +35,6 @@ output "certificate_arn" {
   value = module.certificate.arn
 }
 
-output "certificate_with_SANs_arn" {
-  value = module.certificate_with_SANs.arn
+output "certificate_with_sans_arn" {
+  value = module.certificate_with_sans.arn
 }
