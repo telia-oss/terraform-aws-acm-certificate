@@ -25,6 +25,20 @@ module "certificate_with_sans" {
   subject_alternative_names = ["default-test-2.<route53-zone-name>", "default-test-3.<route53-zone-name>"]
 
 
+
+  tags = {
+    environment = "dev"
+    terraform   = "True"
+  }
+}
+
+module "certificate_with_SANs" {
+  source                    = "../../"
+  hosted_zone_name          = "<route53-zone-name>"
+  certificate_name          = "default-test-1.<route53-zone-name>"
+  subject_alternative_names = ["default-test-2.<route53-zone-name>", "default-test-3.<route53-zone-name>"]
+
+
   tags = {
     environment = "dev"
     terraform   = "True"
