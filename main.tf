@@ -2,7 +2,7 @@
 # Resource
 # ------------------------------------------------------------------------------
 resource "aws_acm_certificate" "main" {
-  domain_name               = var.certificate_name
+  domain_name               = var.domain_name
   subject_alternative_names = var.subject_alternative_names
   validation_method         = "DNS"
   tags                      = var.tags
@@ -22,7 +22,7 @@ data "aws_route53_zone" "main" {
 
 resource "aws_acm_certificate" "wildcard" {
   count             = var.create_wildcard == true ? 1 : 0
-  domain_name       = "*.${var.certificate_name}"
+  domain_name       = "*.${var.domain_name}"
   validation_method = "DNS"
   tags              = var.tags
 

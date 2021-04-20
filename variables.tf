@@ -6,7 +6,7 @@ variable "hosted_zone_name" {
   type        = string
 }
 
-variable "certificate_name" {
+variable "domain_name" {
   description = "The certificate you are requesting (must be valid for the hosted zone)"
   type        = string
 }

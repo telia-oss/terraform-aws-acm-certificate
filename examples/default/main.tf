@@ -9,7 +9,7 @@ provider "aws" {
 module "certificate" {
   source           = "../../"
   hosted_zone_name = "<route53-zone-name>"
-  certificate_name = "default-test.<route53-zone-name>"
+  domain_name      = "default-test.<route53-zone-name>"
 
 
   tags = {
@@ -21,7 +21,7 @@ module "certificate" {
 module "certificate_with_SANs" {
   source                    = "../../"
   hosted_zone_name          = "<route53-zone-name>"
-  certificate_name          = "default-test-1.<route53-zone-name>"
+  domain_name               = "default-test-1.<route53-zone-name>"
   subject_alternative_names = ["default-test-2.<route53-zone-name>", "default-test-3.<route53-zone-name>"]
 
 
